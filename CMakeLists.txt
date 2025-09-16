@@ -15,11 +15,13 @@ find_package(glfw3 CONFIG REQUIRED)
 add_executable(BlackHoleSimulator
   src/main.cpp
   src/engine/engine.cpp
+  src/elements/ray/ray.cpp
 )
 
 target_include_directories(BlackHoleSimulator PRIVATE
   ${EIGEN3_INCLUDE_DIR}
   /opt/homebrew/include/GLFW
+  /opt/homebrew/include/glm
 )
 
 if(APPLE)
