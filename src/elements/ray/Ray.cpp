@@ -6,7 +6,7 @@
 Ray::Ray(vec2 pos) : x(pos.x), y(pos.y) {}
 
 void Ray::draw() const {
-    glPointSize(2.0f);
+    glPointSize(1.0f);
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_POINTS);
         glVertex2f(x, y);
@@ -14,7 +14,7 @@ void Ray::draw() const {
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glLineWidth(2.0f);
+    glLineWidth(1.0f);
 
     size_t N = trail.size();
     if (N >= 2) {
