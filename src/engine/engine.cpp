@@ -9,7 +9,7 @@ Engine::Engine() {
         exit(EXIT_FAILURE);
     }
 
-    window = glfwCreateWindow(WIDTH, HEIGHT, "Black Hole Simulator", nullptr, nullptr);
+    window = glfwCreateWindow(WIDTH, HEIGHT, "Black Hole 2D Simulator", nullptr, nullptr);
 
     if (!window) {
         std::cerr << "Failed to create window\n";
