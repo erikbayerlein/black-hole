@@ -6,7 +6,7 @@
 Ray::Ray(vec2 pos) : x(pos.x), y(pos.y) {}
 
 void Ray::draw() const {
-    glPointSize(1.0f);
+    glPointSize(2.0f);
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_POINTS);
         glVertex2f(x, y);
@@ -31,7 +31,7 @@ void Ray::draw() const {
 }
 
 void Ray::update() {
-    x += 0.01f;
+    x += 0.10f;
     trail.push_back(vec2(x, y));
 
     if (trail.size() > 400) {

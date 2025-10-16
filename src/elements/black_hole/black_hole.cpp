@@ -10,20 +10,16 @@ BlackHole::BlackHole(vec3 pos, float mass) : pos(pos), mass(mass) {
 }
 
 void BlackHole::draw() {
-    const float Rw = static_cast<float>(schwarzschild_radius / WORLD_SCALE);
-    const float xw = static_cast<float>(pos.x / WORLD_SCALE);
-    const float yw = static_cast<float>(pos.y / WORLD_SCALE);
-
-    glColor3f(1.0f, 0.0f, 0.0f);
+    const float R = static_cast<float>(schwarzschild_radius / WORLD_SCALE); // world units
+    const float cx = static_cast<float>(pos.x / WORLD_SCALE);
+    const float cy = static_cast<float>(pos.y / WORLD_SCALE);
 
     glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(xw, yw);
-    for(int i = 0; i <= 100; i++) {
-        float angle = 2.0f * M_PI * i / 100;
-        float x = xw + Rw * cosf(angle);
-        float y = yw + Rw * sinf(angle);
-        glVertex2f(x, y);
+    glColor3f(1,0,0);
+    glVertex2f(cx, cy);
+    for (int i=0; i<=100; ++i) {
+        float a = 2.0f * M_PI * i / 100;
+        glVertex2f(cx + R * cosf(a), cy + R * sinf(a));
     }
     glEnd();
 }
-

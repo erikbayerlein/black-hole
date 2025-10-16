@@ -18,19 +18,28 @@ Engine::Engine() {
     }
 
     glfwMakeContextCurrent(window);
+
+    int fbw, fbh;
+    glfwGetFramebufferSize(window, &fbw, &fbh);
+    glViewport(0, 0, fbw, fbh);
+
+    glfwSetFramebufferSizeCallback(window, [](GLFWwindow* w, int wpx, int hpx) {
+        glViewport(0, 0, wpx, hpx);
+    });
+
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glViewport(0, 0, WIDTH, HEIGHT);
 }
 
 void Engine::run() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-1, 1, -1, 1, -1, 1);
+    int fbw, fbh; glfwGetFramebufferSize(window, &fbw, &fbh);
+    double aspect = (double)fbw / (double)fbh;
+    glOrtho(-aspect, aspect, -1, 1, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
-
 void Engine::stop() {
     if (window) {
         glfwDestroyWindow(window);
