@@ -10,9 +10,9 @@ class BlackHole {
         vec3 pos;
         double radius;
         double mass;
-        double schwarzschild_radius;
     
     public:
+        double schwarzschild_radius;
         BlackHole(vec3 pos, float mass);
         void draw();
 };
