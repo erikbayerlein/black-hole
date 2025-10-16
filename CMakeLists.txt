@@ -17,6 +17,7 @@ add_executable(BlackHoleSimulator
   src/engine/engine.cpp
   src/elements/ray/ray.cpp
   src/elements/black_hole/black_hole.cpp
+  src/geodesic/geodesic.cpp
 )
 
 target_include_directories(BlackHoleSimulator PRIVATE
